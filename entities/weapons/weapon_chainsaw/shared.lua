@@ -71,7 +71,7 @@ SWEP.Slot			= 6
 SWEP.CanBuy = {ROLE_TRAITOR}
 SWEP.AdminSpawnable = true
 SWEP.Primary.ClipSize = -1
-SWEP.Primary.Damage = 1
+SWEP.Primary.Damage = 8
 SWEP.Primary.DefaultClip = -1
 SWEP.Primary.Automatic = true
 SWEP.Primary.Ammo = "none"
@@ -115,7 +115,7 @@ emitter = ParticleEmitter(self:GetPos())
 end
 end
 function SWEP:Deploy()
-	self.Weapon:EmitSound( "weapons/arch_chainsaw/chainsaw_start_0"..math.random( 1, 2 )..".wav" )
+	self.Weapon:EmitSound( "weapons/arch_chainsaw/chainsaw_start_0"..math.random( 1, 2 )..".wav",40,100 )
 	self.Weapon:SendWeaponAnim( ACT_VM_DRAW )
 	timer.Create( "IdleSoundStart", 3, 1, function()
 idlesound:Play() -- starts the sound
@@ -162,7 +162,7 @@ local function StabCallback(attacker, trace, dmginfo)
 				Effect:SetRadius(5)
 				Effect:SetColor(Color(0,0,255,255))
 				util.Effect("sparks", Effect)
-				attacker:EmitSound( "npc/manhack/grind"..math.random( 1, 5 )..".wav" )
+				attacker:EmitSound( "npc/manhack/grind"..math.random( 1, 5 )..".wav",40,100 )
 				util.Decal("ManhackCut", trace.HitPos + trace.HitNormal * 8, trace.HitPos - trace.HitNormal * 8)
 		end
 		if trace.Entity:IsValid() then
@@ -172,7 +172,7 @@ local function StabCallback(attacker, trace, dmginfo)
 	attacksound:ChangePitch( 100 )
 		attacker:GetActiveWeapon():SendWeaponAnim(ACT_VM_HITCENTER)
 		if SERVER then
-			--attacker:EmitSound("weapons/iceaxe/iceaxe_swing1.wav", 80, math.random(65, 70))
+			--attacker:EmitSound("weapons/iceaxe/iceaxe_swing1.wav", 40, math.random(65, 70))
 		end
 	end
 	return {effects = false, damage = false}
@@ -196,7 +196,7 @@ local function SlashCallback(attacker, trace, dmginfo)
 				Effect:SetRadius(5)
 				Effect:SetColor(Color(0,0,255,255))
 				util.Effect("sparks", Effect)
-				attacker:EmitSound( "npc/manhack/grind_flesh"..math.random( 1, 3 )..".wav", 200, 50 )
+				attacker:EmitSound( "npc/manhack/grind_flesh"..math.random( 1, 3 )..".wav", 40, 50 )
 				util.Decal("ManhackCut", trace.HitPos + trace.HitNormal * 8, trace.HitPos - trace.HitNormal * 8)
 		end
 		if trace.Entity:IsValid() then
@@ -205,7 +205,7 @@ local function SlashCallback(attacker, trace, dmginfo)
 	else
 		attacker:GetActiveWeapon():SendWeaponAnim(ACT_VM_MISSCENTER)
 		if SERVER then
-			--attacker:EmitSound("weapons/iceaxe/iceaxe_swing1.wav", 80, math.random(65, 70))
+			--attacker:EmitSound("weapons/iceaxe/iceaxe_swing1.wav", 40, math.random(65, 70))
 		end
 	end
 	return {effects = false, damage = false}
@@ -249,7 +249,7 @@ function SWEP:SecondaryAttack()
 		self:SetNextPrimaryFire(CurTime() + self.Secondary.Delay)
 		self:SetWeaponHoldType("melee2")
 		self.Owner:SetAnimation(PLAYER_ATTACK1)
-		self.Owner:EmitSound("weapons/arch_chainsaw/chainsaw_die_01.wav", 50, 100)
+		self.Owner:EmitSound("weapons/arch_chainsaw/chainsaw_die_01.wav", 30, 100)
 		self.Owner:ViewPunch( Angle( -10, 0, 0 ) )
 			timer.Create( "setmeleetype", 0.5, 1, function()
 			self:SetWeaponHoldType("physgun")
@@ -276,9 +276,9 @@ function SWEP:Holster()
 	timer.Destroy( "IdleSound" )
 	idlesound:Stop() -- stops the sound
 	attacksound:Stop()
-	self.Owner:EmitSound("weapons/arch_chainsaw/chainsaw_die_01.wav")
-	self.Owner:StopSound("weapons/arch_chainsaw/chainsaw_start_01")
-	self.Owner:StopSound("weapons/arch_chainsaw/chainsaw_start_02")
+	self.Owner:EmitSound("weapons/arch_chainsaw/chainsaw_die_01.wav",30,100)
+	self.Owner:StopSound("weapons/arch_chainsaw/chainsaw_start_01",30,100)
+	self.Owner:StopSound("weapons/arch_chainsaw/chainsaw_start_02",30,100)
 	return true
 end
 if CLIENT then
