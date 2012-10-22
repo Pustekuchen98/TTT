@@ -3,7 +3,8 @@
 if ( SERVER ) then
 
 	AddCSLuaFile( "shared.lua" )
-	
+	resource.AddFile("materials/VGUI/ttt/icon_taser.vmt")
+        resource.AddFile("materials/VGUI/ttt/icon_taser.vtf")	
 	SWEP.Weight				= 2
 SWEP.AutoSwitchTo		= true
 SWEP.AutoSwitchFrom		= true
@@ -14,14 +15,14 @@ end
 SWEP.Base = "weapon_tttbase"
 SWEP.Kind			= WEAPON_EQUIP
 SWEP.CanBuy = {ROLE_DETECTIVE}
-
+SWEP.Icon = "VGUI/ttt/icon_taser"
 if ( CLIENT ) then
 
 SWEP.PrintName = "Taser";
 SWEP.Slot = 2;
 SWEP.DrawAmmo = false;
 SWEP.DrawCrosshair = true;
-
+SWEP.Icon = "VGUI/ttt/icon_taser"
 SWEP.EquipMenuData = {
 		type = "Detective weaponry",
 		desc = "Shockingly good fun."
