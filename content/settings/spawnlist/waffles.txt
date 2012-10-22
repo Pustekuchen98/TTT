@@ -1,0 +1,14 @@
+"SpawnMenu"
+{
+	"Information"
+	{
+		"version"		"2"
+		"name"		"Waffles"
+	}
+	"Entries"
+	{
+		"1"		"models/toaster.mdl"
+		"2"		"models/waffle.mdl"
+		"3"		"models/miniwaffle.mdl"
+	}
+}

@@ -1,0 +1,16 @@
+VertexLitGeneric
+{
+	"$basetexture"	"models\weapons\v_models\Magic_bullet\bullet"
+	"$bumpmap" "models\weapons\v_models\Magic_bullet\bullet_normal"
+	 "$phong" "1"
+	"$phongboost" "1"
+	"$phongfresnelranges" "[1 1 1]"
+	"$phongexponent" "5"
+	"$phongalbedotint" "1"
+	"$halflambert" "1"
+	"$nocull" "1"
+
+
+}
+
+	

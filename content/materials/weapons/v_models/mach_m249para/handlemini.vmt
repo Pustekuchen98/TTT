@@ -1,0 +1,8 @@
+"VertexLitGeneric"
+{
+	"$baseTexture"  "models\weapons\v_models\mach_m249para\handlemini"
+	//"$envmap" "env_cubemap"
+	//"$bumpmap" "models\weapons\v_models\mach_m249para\handlemini_normal"
+	//"$normalmapalphaenvmapmask" "1"
+        "$model" 1
+}
